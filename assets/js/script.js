@@ -25,29 +25,30 @@ function popHtml() {
   });
 }
 
+let prodottoTemporaneo = null;
+
 function editCompilato(productId) {
-  try {
-    window.onload = () => {
-      let id = document.getElementById("productId");
-      let name = document.getElementById("name");
-      let brand = document.getElementById("brand");
-      let description = document.getElementById("description");
-      let url = document.getElementById("url");
-      let price = document.getElementById("price");
+  let prodotto = listaProducts.filter((e) => (e.id = productId))[0];
+  prodottoTemporaneo = prodotto;
+  window.location.href = "./editoffice.html";
+}
 
-      let prodotto = listaProducts.filter((e) => (e.id = productId))[0];
+function onEditOffice() {
+  let id = document.getElementById("productId");
+  let name = document.getElementById("name");
+  let brand = document.getElementById("brand");
+  let description = document.getElementById("description");
+  let url = document.getElementById("url");
+  let price = document.getElementById("price");
 
-      id.value = prodotto.id;
-      name.value = prodotto.name;
-      brand.value = prodotto.brand;
-      description.value = prodotto.description;
-      url.value = prodotto.url;
-      price.value = prodotto.price;
-    };
-    window.location.href = "./editoffice.html";
-  } catch (error) {
-    alert(error);
-  }
+  let prodotto = prodottoTemporaneo;
+
+  id.value = prodotto.id;
+  name.value = prodotto.name;
+  brand.value = prodotto.brand;
+  description.value = prodotto.description;
+  url.value = prodotto.url;
+  price.value = prodotto.price;
 }
 
 function getProducts() {
@@ -111,7 +112,7 @@ function updateProduct() {
     description: description.value,
     price: +price.value,
   };
-  addProduct(newProduct);
+  editProduct(newProduct);
 }
 
 function deleteProduct(productId) {
