@@ -158,6 +158,30 @@ function createProduct() {
   addProduct(newProduct);
 }
 
+function confirmReset(event) {
+  event.preventDefault();
+
+  const userConfirmed = confirm("Premendo 'Si' tutti i dati verranno persi.");
+
+  if (userConfirmed) {
+    event.target.form.reset();
+  } else {
+    return false;
+  }
+}
+
+function confirmDelete(event) {
+  event.preventDefault();
+
+  const userConfirmed = confirm("Premendo 'Si' tutti i dati verranno eliminati.");
+
+  if (userConfirmed) {
+    event.target.form.submit();
+  } else {
+    return false;
+  }
+}
+
 getProducts();
 /* addProduct({
   imageUrl: "https://beautyzon.it/cdn/shop/products/VITALC-HYDRATING-ANTIAGING-SERUM_600x600_crop_center.jpg?v=1736783757",

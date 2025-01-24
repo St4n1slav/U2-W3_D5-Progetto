@@ -45,9 +45,13 @@
               <label for="price" class="form-label">Price</label>
               <input type="number" class="form-control" id="price" placeholder="999.99" />
             </div>
-
-            <div class="d-flex justify-content-between align-items-center">
-              <button id="submit-btn" type="submit" class="btn">Save</button>
+            <div class="d-flex">
+              <div class="d-flex justify-content-between align-items-center">
+                <button id="submit-btn" type="submit" class="btn">Save</button>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <button id="delete-btn" onclick="confirmReset(event)" type="reset" class="btn">reset</button>
+              </div>
             </div>
           </form>
         </div>
@@ -64,9 +68,13 @@
               <label for="productId" class="form-label">Id prodotto</label>
               <input type="text" class="form-control" id="productId" placeholder="Inserisci l'ID del prodotto dà cancellare" required />
             </div>
-
-            <div class="d-flex justify-content-between align-items-center">
-              <button id="delete-btn" type="submit" class="mb-5 btn">Delete</button>
+            <div class="d-flex">
+              <div class="d-flex justify-content-between align-items-center">
+                <button id="delete-btn" onclick="confirmDelete(event)" type="submit" class="mb-5 btn">Delete</button>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <button id="delete-btn" onclick="confirmReset(event)" type="reset" class="mb-5 btn">reset</button>
+              </div>
             </div>
           </form>
         </div>
