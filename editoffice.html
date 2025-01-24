@@ -17,10 +17,15 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-6">
-          <h2 class="display-5 d-inline-block my-4">Backoffice</h2>
+          <h2 class="display-5 d-inline-block my-4">Modifca il prodotto</h2>
           <h5 class="d-inline-block"></h5>
 
-          <form onsubmit="createProduct()" enctype="multipart/form-data">
+          <form onsubmit="editProduct()" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="productId" class="form-label">Id prodotto</label>
+              <input type="text" class="form-control" id="productId" placeholder="Inserisci l'ID del prodotto dà modificare" required />
+            </div>
+
             <div class="mb-3">
               <label for="name" class="form-label">Nome</label>
               <input type="text" class="form-control" id="name" placeholder="Inserisci il nome del prodotto" required />
@@ -47,31 +52,13 @@
             </div>
 
             <div class="d-flex justify-content-between align-items-center">
-              <button id="submit-btn" type="submit" class="btn">Save</button>
+              <button id="submit-btn" type="submit" class="mb-5 btn">Invio</button>
             </div>
           </form>
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-6">
-          <h2 class="display-5 d-inline-block my-4">To Delete The Product</h2>
-          <h5 class="d-inline-block"></h5>
 
-          <form onsubmit="deleteById()">
-            <div class="mb-3">
-              <label for="productId" class="form-label">Id prodotto</label>
-              <input type="text" class="form-control" id="productId" placeholder="Inserisci l'ID del prodotto dà cancellare" required />
-            </div>
-
-            <div class="d-flex justify-content-between align-items-center">
-              <button id="delete-btn" type="submit" class="mb-5 btn">Delete</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
     <script src="./assets/js/script.js"></script>
   </body>
   <script

@@ -7,7 +7,7 @@ const card = `<div id="%id" class="card col-4 text-center" style="width: 18rem">
           <h5 class="card-title">%name</h5>
           <p class="card-text">%description</p>
           <p class="card-text">%price</p>
-          <a href="#" onclick="addToCard('card01')" class="btn btn-primary mb-1">Compra Ora</a>
+          <a href="#" onclick="editCompilato('%id')" class="btn btn-primary mb-1">Modifica</a>
           <a href="#" onclick="scart('card01')" class="btn btn-primary">Scart</a>
         </div>`;
 
@@ -24,6 +24,25 @@ function popHtml() {
       .replace("%description", element.description)
       .replace("%price", element.price);
   });
+}
+
+function editCompilato(productId) {
+  window.location.href = "./editoffice.html";
+  let id = document.getElementById("productId");
+  let name = document.getElementById("name");
+  let brand = document.getElementById("brand");
+  let description = document.getElementById("description");
+  let url = document.getElementById("url");
+  let price = document.getElementById("price");
+
+  let prodotto = listaProducts.filter((e) => (e.id = productId))[0];
+
+  id.value = prodotto.id;
+  name.value = prodotto.name;
+  brand.value = prodotto.brand;
+  description.value = prodotto.description;
+  url.value = prodotto.url;
+  price.value = prodotto.price;
 }
 
 function getProducts() {
@@ -69,6 +88,25 @@ function editProduct(prodotto) {
   })
     .then((r) => getProducts())
     .catch((r) => console.log(r));
+}
+
+function updateProduct() {
+  let id = document.getElementById("productId");
+  let name = document.getElementById("name");
+  let brand = document.getElementById("brand");
+  let description = document.getElementById("description");
+  let url = document.getElementById("url");
+  let price = document.getElementById("price");
+
+  const newProduct = {
+    id: id.value,
+    imageUrl: url.value,
+    brand: brand.value,
+    name: name.value,
+    description: description.value,
+    price: +price.value,
+  };
+  addProduct(newProduct);
 }
 
 function deleteProduct(productId) {
