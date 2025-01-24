@@ -42,6 +42,7 @@ function addProduct(prodotto) {
     headers: {
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzkzNmE5ZGI3NDcwMTAwMTU4YjJiOGQiLCJpYXQiOjE3Mzc3MTQzMzMsImV4cCI6MTczODkyMzkzM30.4sBMWQsysJTfD95j4Y65OvT_iKJ2pQmXzJsyJa1laAk",
+      "Content-Type": "application/json",
     },
     method: "POST",
     body: JSON.stringify(prodotto),
