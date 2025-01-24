@@ -11,6 +11,21 @@ const card = `<div id="%id" class="card col-4 text-center" style="width: 18rem">
           <a href="#" onclick="scart('card01')" class="btn btn-primary">Scart</a>
         </div>`;
 
+const listaProducts = [];
+
+function popHtml() {
+  document.getElementById("card").innerHTML = "";
+  listaProducts.forEach((element) => {
+    document.getElementById("card").innerHTML += card
+      .replace("%id", element.id)
+      .replace("%url", element.imageUrl)
+      .replace("%brand", element.brand)
+      .replace("%name", element.name)
+      .replace("%description", element.description)
+      .replace("%price", element.price);
+  });
+}
+
 function getProducts() {
   fetch(baseUrl, {
     headers: {
@@ -23,16 +38,8 @@ function getProducts() {
       return result.json();
     })
     .then((result) => {
-      document.getElementById("card").innerHTML = "";
-      result.forEach((element) => {
-        document.getElementById("card").innerHTML += card
-          .replace("%id", element.id)
-          .replace("%url", element.imageUrl)
-          .replace("%brand", element.brand)
-          .replace("%name", element.name)
-          .replace("%description", element.description)
-          .replace("%price", element.price);
-      });
+      listaProducts = result;
+      popHtml();
     })
     .catch((r) => console.log(r));
 }
@@ -104,59 +111,3 @@ getProducts();
   price: 9.99,
 });
  */
-
-//{"imageUrl":"https://www.hollywoodreporter.com/wp-content/uploads/2012/12/img_logo_blue.jpg?w=1440&h=810&crop=1","brand":"asgdasdg","name":"Giovanni","description":"<sdfasdfasd asdafsdf","price":5}
-/* {
-    "message": "products validation failed: price: Path `price` is required., imageUrl: Path `imageUrl` is required., brand: Path `brand` is required., description: Path `description` is required.",
-    "error": {
-        "errors": {
-            "price": {
-                "message": "Path `price` is required.",
-                "name": "ValidatorError",
-                "properties": {
-                    "message": "Path `price` is required.",
-                    "type": "required",
-                    "path": "price"
-                },
-                "kind": "required",
-                "path": "price"
-            },
-            "imageUrl": {
-                "message": "Path `imageUrl` is required.",
-                "name": "ValidatorError",
-                "properties": {
-                    "message": "Path `imageUrl` is required.",
-                    "type": "required",
-                    "path": "imageUrl"
-                },
-                "kind": "required",
-                "path": "imageUrl"
-            },
-            "brand": {
-                "message": "Path `brand` is required.",
-                "name": "ValidatorError",
-                "properties": {
-                    "message": "Path `brand` is required.",
-                    "type": "required",
-                    "path": "brand"
-                },
-                "kind": "required",
-                "path": "brand"
-            },
-            "description": {
-                "message": "Path `description` is required.",
-                "name": "ValidatorError",
-                "properties": {
-                    "message": "Path `description` is required.",
-                    "type": "required",
-                    "path": "description"
-                },
-                "kind": "required",
-                "path": "description"
-            }
-        },
-        "_message": "products validation failed",
-        "message": "products validation failed: price: Path `price` is required., imageUrl: Path `imageUrl` is required., brand: Path `brand` is required., description: Path `description` is required.",
-        "name": "ValidationError"
-    }
-} */
