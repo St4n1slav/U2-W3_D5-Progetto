@@ -11,12 +11,12 @@ const card = `<div id="%id" class="card col-4 text-center" style="width: 18rem">
           <a href="#" onclick="scart('card01')" class="btn btn-primary">Scart</a>
         </div>`;
 
-const listaProducts = [];
+let listaProducts = [];
 
 function popHtml() {
-  document.getElementById("card").innerHTML = "";
+  document.getElementById("products").innerHTML = "";
   listaProducts.forEach((element) => {
-    document.getElementById("card").innerHTML += card
+    document.getElementById("products").innerHTML += card
       .replace("%id", element.id)
       .replace("%url", element.imageUrl)
       .replace("%brand", element.brand)
@@ -111,3 +111,5 @@ getProducts();
   price: 9.99,
 });
  */
+
+document.addEventListener("DOMContentLoaded", getProducts, false);
