@@ -2,12 +2,13 @@ const baseUrl = "https://striveschool-api.herokuapp.com/api/product/";
 //const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzkzNmE5ZGI3NDcwMTAwMTU4YjJiOGQiLCJpYXQiOjE3Mzc3MTQzMzMsImV4cCI6MTczODkyMzkzM30.4sBMWQsysJTfD95j4Y65OvT_iKJ2pQmXzJsyJa1laAk";
 
 const card = `<div id="%id" class="card col-4 text-center" style="width: 18rem">
-          <img src="%url" alt="bookCover01" />
+          <img src="%url" alt="imgProdotto" />
           <h5 class="card-title">%brand</h5>
           <h5 class="card-title">%name</h5>
           <p class="card-text">%description</p>
           <p class="card-text">%price</p>
           <a href="#" onclick="editCompilato('%id')" class="btn btn-primary mb-1">Modifica</a>
+          <a href="./ditails.html" class="btn btn-warning mb-1">Dettagli</a>
         </div>`;
 
 let listaProducts = [];
@@ -23,6 +24,14 @@ function popHtml() {
       .replace("%description", element.description)
       .replace("%price", element.price);
   });
+}
+
+let dettagliTemporanei = null;
+
+function popDitails(productId) {
+  let prodotto = listaProducts.filter((e) => (e.id = productId))[0];
+  dettagliTemporanei = prodotto;
+  window.location.href = "./ditails.html";
 }
 
 let prodottoTemporaneo = null;
