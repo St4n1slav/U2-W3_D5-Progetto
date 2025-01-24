@@ -71,21 +71,24 @@ function editProduct(prodotto) {
     .catch((r) => console.log(r));
 }
 
-function deleteProduct(prodotto) {
-  fetch(baseUrl + "/" + prodotto.id, {
+function deleteProduct(productId) {
+  fetch(baseUrl + "/" + productId, {
     headers: {
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzkzNmE5ZGI3NDcwMTAwMTU4YjJiOGQiLCJpYXQiOjE3Mzc3MTQzMzMsImV4cCI6MTczODkyMzkzM30.4sBMWQsysJTfD95j4Y65OvT_iKJ2pQmXzJsyJa1laAk",
     },
     method: "DELETE",
-    body: JSON.stringify(prodotto),
   })
     .then((r) => getProducts())
     .catch((r) => console.log(r));
 }
 
+function deleteById() {
+  let productToDelet = document.getElementById("productId");
+  deleteProduct(productToDelet.value);
+}
+
 function createProduct() {
-  let form = document.getElementById("appointment-form");
   let name = document.getElementById("name");
   let brand = document.getElementById("brand");
   let description = document.getElementById("description");
